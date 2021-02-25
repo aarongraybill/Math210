@@ -83,3 +83,5 @@ def pivot(a,pivrow,pivcol,indep_names,dep_names) :
     dep_names[pivrow-1]=temp
     print_tableau(newa,indep_names,dep_names) # Print the matrix with updated labels
     return newa;
+
+print("Hello World, IT's working")
