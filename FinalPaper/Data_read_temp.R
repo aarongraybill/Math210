@@ -1,10 +1,10 @@
 d <- 
   data.table::fread("/Users/aarongraybill/Downloads/Trade_DetailedTradeMatrix_E_All_Data/Trade_DetailedTradeMatrix_E_All_Data.csv",showProgress=T)
 
-d_small<- 
-  data.table::fread("/Users/aarongraybill/Downloads/Trade_DetailedTradeMatrix_E_All_Data/Trade_DetailedTradeMatrix_E_All_Data.csv",
-                    showProgress=T,
-                    nrows=100)
+# d_small<- 
+#   data.table::fread("/Users/aarongraybill/Downloads/Trade_DetailedTradeMatrix_E_All_Data/Trade_DetailedTradeMatrix_E_All_Data.csv",
+#                     showProgress=T,
+#                     nrows=100)
 
 
 d_old <- 
