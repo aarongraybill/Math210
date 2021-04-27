@@ -5629,16 +5629,16 @@ Aaron Graybill &amp; Gabe Sekeres
 <ul>
 <li>Individual firm denoted <span class="math inline">\(a_n\)</span></li>
 </ul></li>
-<li>Every <span class="math inline">\(a_n\)</span> is connected to every other</li>
-<li>Let <span class="math inline">\(t_{1,2}\)</span> be the capacity (trade) from <span class="math inline">\(a_1\)</span> to <span class="math inline">\(a_2\)</span></li>
+<li>Every <span class="math inline">\(a_i\)</span> is connected to every other</li>
+<li>Let <span class="math inline">\(t_{i,j}\)</span> be the capacity (trade) from <span class="math inline">\(a_i\)</span> to <span class="math inline">\(a_j\)</span></li>
 </ul>
 </div>
 <div id="sample-network" class="slide section level2">
 <h1>Sample Network</h1>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="htmlwidget-97554fe6c75a967b97e0" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-97554fe6c75a967b97e0">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland"],"label":["France","Italy","Germany","Switzerland"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy"],"width":[10,5,4,1,4,3,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a7083b6b3530b6712f20" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a7083b6b3530b6712f20">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland"],"label":["France","Italy","Germany","Switzerland"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy"],"width":[10,5,4,1,4,3,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
 </div><div class="column" style="width:40%;">
 <ul>
 <li>Let each arrow represent exports from one country to another.
@@ -5655,10 +5655,10 @@ Aaron Graybill &amp; Gabe Sekeres
 <div id="modelling-systemic-shock" class="slide section level2">
 <h1>Modelling systemic shock</h1>
 <ul>
-<li>Consider a shock to <span class="math inline">\(a_n\)</span> of magnitude <span class="math inline">\(\sigma_n\)</span></li>
-<li>We perform a min-cost flow algorithm with <span class="math inline">\(a_n\)</span> as the sink
+<li>Consider a shock to <span class="math inline">\(a_i\)</span> of magnitude <span class="math inline">\(\sigma_i\)</span></li>
+<li>We perform a min-cost flow algorithm with <span class="math inline">\(a_i\)</span> as the sink
 <ul>
-<li>The minimum required flow is <span class="math inline">\(\sigma_n\)</span></li>
+<li>The minimum required flow is <span class="math inline">\(\sigma_i\)</span></li>
 </ul></li>
 <li>What are the costs?
 <ul>
@@ -5669,17 +5669,28 @@ Aaron Graybill &amp; Gabe Sekeres
 <li>This means that an arrow going one way in the diagram above goes the other way in shock propagation</li>
 <li>example on next slide</li>
 </ul></li>
+<li>What are the interior capacities?
+<ul>
+<li>Idea 1:
+<ul>
+<li>If <span class="math inline">\(x\%\)</span> of <span class="math inline">\(a_i\)</span>’s exports are to <span class="math inline">\(a_j\)</span>, <span class="math inline">\(a_j\)</span> cannot receive more than <span class="math inline">\(x\%\sigma_i\)</span></li>
+</ul></li>
+<li>Idea 2:
+<ul>
+<li>If <span class="math inline">\(x\%\)</span> of <span class="math inline">\(a_j\)</span>’s imports are from <span class="math inline">\(a_i\)</span>, <span class="math inline">\(a_j\)</span> cannot receive more than <span class="math inline">\(x\%\sigma_i\)</span></li>
+</ul></li>
+</ul></li>
 </ul>
 </div>
 <div id="shock-example" class="slide section level2">
 <h1>Shock Example</h1>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="htmlwidget-b46154ae3030a1ef53ae" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b46154ae3030a1ef53ae">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland"],"label":["France","Italy","Germany","Switzerland"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy"],"width":[10,5,4,1,4,3,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7fdbb2cd36de536ab032" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7fdbb2cd36de536ab032">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland"],"label":["France","Italy","Germany","Switzerland"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy"],"width":[10,5,4,1,4,3,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
 </div><div class="column" style="width:40%;">
-<div id="htmlwidget-de72f407177fb5258cda" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-de72f407177fb5258cda">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland","Source"],"label":["France","Italy","Germany","Switzerland","Source"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland","Italy","Germany","France"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy","Source","Source","Source"],"width":[10,5,4,1,4,3,0.5,0.5,0.5,1,1,1]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"from","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cde1c1572854f56488c4" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cde1c1572854f56488c4">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland","Source"],"label":["France","Italy","Germany","Switzerland","Source"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland","Italy","Germany","France"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy","Source","Source","Source"],"width":[10,5,4,1,4,3,0.5,0.5,0.5,1,1,1]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"from","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -5691,6 +5702,13 @@ Aaron Graybill &amp; Gabe Sekeres
 <li>Because what would the capacities mean?</li>
 <li>The <span class="math inline">\(\sigma_n\)</span> would not be well defined because it would be the size of the system shock, not domestic shock</li>
 </ul></li>
+<li>This way we can have the capacities on paths from the source to the non-shock countries limited to a finite value
+<ul>
+<li>That is the algorithm doesn’t try to send the entire shock through one path
+<ul>
+<li>But what should those capacities be?</li>
+</ul></li>
+</ul></li>
 </ul>
 </div>
 <div id="tbds" class="slide section level2">
@@ -5698,7 +5716,7 @@ Aaron Graybill &amp; Gabe Sekeres
 <ul>
 <li>How to deal with capacities, like what are they both in the model and in real life?
 <ul>
-<li>What capacity from source to other points</li>
+<li>What capacity from source to other points?</li>
 </ul></li>
 </ul>
 </div>
@@ -6666,6 +6684,22 @@ Aaron Graybill &amp; Gabe Sekeres
 </tr>
 </tbody>
 </table>
+</div>
+<div id="discussion-and-conclusion" class="slide section level2">
+<h1>Discussion and conclusion</h1>
+<ul>
+<li>That’s a lot of data (1.42 Gb .csv!) that we need to aggregate/filter in a meaningful way.
+<ul>
+<li>So many <code>NA</code>s, what to do? Do we even have complete network
+<ul>
+<li>Safe to assume <code>NA</code> means no trade? bc there are 0s elsewhere?</li>
+</ul></li>
+</ul></li>
+<li>The model above was just a jumping off point that we need to iron out
+<ul>
+<li>How to apply lin-opt to “unwanted” flow</li>
+</ul></li>
+</ul>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

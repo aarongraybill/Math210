@@ -47,8 +47,8 @@ knitr::opts_chunk$set(echo = FALSE,message=F,warning=F)
 ## Model
 - Economy of $N$ firms (countries, banks, etc.).
   - Individual firm denoted $a_n$
-- Every $a_n$ is connected to every other 
-- Let $t_{1,2}$ be the capacity (trade) from $a_1$ to $a_2$
+- Every $a_i$ is connected to every other 
+- Let $t_{i,j}$ be the capacity (trade) from $a_i$ to $a_j$
 
 ```{r,echo=F}
 library(tidygraph)
@@ -99,14 +99,19 @@ visNetwork(nodes, edges) %>%
 
 ## Modelling systemic shock
 
-- Consider a shock to $a_n$ of magnitude $\sigma_n$
-- We perform a min-cost flow algorithm with $a_n$ as the sink
-  - The minimum required flow is $\sigma_n$
+- Consider a shock to $a_i$ of magnitude $\sigma_i$
+- We perform a min-cost flow algorithm with $a_i$ as the sink
+  - The minimum required flow is $\sigma_i$
 - What are the costs?
   - Cost inversely proportional to quantity imported
     - eg. shock in $a_1$, the cost of going from $a_2$ to $a_1$ $\propto \frac{1}{t_{1,2}}$
   - This means that an arrow going one way in the diagram above goes the other way in shock propagation
   - example on next slide
+- What are the interior capacities?
+  - Idea 1:
+    - If $x\%$ of $a_i$'s exports are to $a_j$, $a_j$ cannot receive more than $x\%\sigma_i$
+  - Idea 2:
+    - If $x\%$ of $a_j$'s imports are from $a_i$, $a_j$ cannot receive more than $x\%\sigma_i$
   
 ## Shock Example
 :::: {.columns}
@@ -155,6 +160,8 @@ visNetwork(nodes, edges) %>%
 
 - How to deal with capacities, like what are they both in the model and in real life?
   - What capacity from source to other points?
+- Under the desired capacities model, is it possible for a non-originating country to receive more than $\sigma$
+  - I don't think so, how could we make this happen?
 
 ## Emprical Implementation
 
@@ -182,9 +189,8 @@ knitr::kable(d[sample_row,])
 ## Discussion and conclusion
 
 - That's a lot of data (1.42 Gb .csv!) that we need to aggregate/filter in a meaningful way.
+  - So many `NA`s, what to do? Do we even have complete network
+    - Safe to assume `NA` means no trade? bc there are 0s elsewhere?
 
 - The model above was just a jumping off point that we need to iron out
   - How to apply lin-opt to "unwanted" flow
-
-
-
