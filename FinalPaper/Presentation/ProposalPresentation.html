@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Aaron Graybill &amp; Gabe Sekeres" />
-  <meta name="date" content="2021-04-26" />
+  <meta name="date" content="2021-04-30" />
   <title>210 Project Proposal</title>
   <style type="text/css">
     code{white-space: pre-wrap;}
@@ -15,7 +15,135 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-              </style>
+            code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode { white-space: pre; position: relative; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    code.sourceCode { white-space: pre-wrap; }
+    code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+          </style>
+  <style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
   <style type="text/css">
 body
 {
@@ -5568,7 +5696,7 @@ HTMLWidgets.widget({
   <p class="author">
 Aaron Graybill &amp; Gabe Sekeres
   </p>
-  <p class="date">2021-04-26</p>
+  <p class="date">2021-04-30</p>
 </div>
 <div id="roadmap" class="slide section level2">
 <h1>Roadmap</h1>
@@ -5637,8 +5765,8 @@ Aaron Graybill &amp; Gabe Sekeres
 <h1>Sample Network</h1>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="htmlwidget-a7083b6b3530b6712f20" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a7083b6b3530b6712f20">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland"],"label":["France","Italy","Germany","Switzerland"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy"],"width":[10,5,4,1,4,3,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-49245a1be7b4e761e267" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-49245a1be7b4e761e267">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland"],"label":["France","Italy","Germany","Switzerland"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy"],"width":[10,5,4,1,4,3,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
 </div><div class="column" style="width:40%;">
 <ul>
 <li>Let each arrow represent exports from one country to another.
@@ -5653,31 +5781,49 @@ Aaron Graybill &amp; Gabe Sekeres
 </div>
 </div>
 <div id="modelling-systemic-shock" class="slide section level2">
-<h1>Modelling systemic shock</h1>
+<h1>Modelling Systemic Shock</h1>
 <ul>
 <li>Consider a shock to <span class="math inline">\(a_i\)</span> of magnitude <span class="math inline">\(\sigma_i\)</span></li>
-<li>We perform a min-cost flow algorithm with <span class="math inline">\(a_i\)</span> as the sink
+<li>Denote total imports for country <span class="math inline">\(i\)</span> as <span class="math inline">\(I_i\)</span>
 <ul>
-<li>The minimum required flow is <span class="math inline">\(\sigma_i\)</span></li>
+<li><span class="math inline">\(I_i=\sum_{j\neq i}t_{ji}\)</span></li>
 </ul></li>
-<li>What are the costs?
+<li>Denote total exported for country <span class="math inline">\(i\)</span> as <span class="math inline">\(X_i\)</span>
 <ul>
-<li>Cost inversely proportional to quantity imported
-<ul>
-<li>eg. shock in <span class="math inline">\(a_1\)</span>, the cost of going from <span class="math inline">\(a_2\)</span> to <span class="math inline">\(a_1\)</span> <span class="math inline">\(\propto \frac{1}{t_{1,2}}\)</span></li>
+<li><span class="math inline">\(X_i=\sum_{j\neq i}t_{ij}\)</span></li>
 </ul></li>
-<li>This means that an arrow going one way in the diagram above goes the other way in shock propagation</li>
-<li>example on next slide</li>
+<li>We perform a modified min-cost flow algorithm with <span class="math inline">\(a_i\)</span> as the source
+<ul>
+<li>Instead of having a constraint on the sink, we have a constraint on the source to dispense a quantity <span class="math inline">\(\sigma_i\)</span> of flow</li>
 </ul></li>
-<li>What are the interior capacities?
+</ul>
+</div>
+<div id="modelling-systemic-shock-cont." class="slide section level2">
+<h1>Modelling Systemic Shock Cont.</h1>
 <ul>
-<li>Idea 1:
+<li>Capacities (not to sink):
 <ul>
-<li>If <span class="math inline">\(x\%\)</span> of <span class="math inline">\(a_i\)</span>’s exports are to <span class="math inline">\(a_j\)</span>, <span class="math inline">\(a_j\)</span> cannot receive more than <span class="math inline">\(x\%\sigma_i\)</span></li>
+<li><span class="math inline">\(\frac{t_{ij}}{X_i}\sigma\)</span></li>
+<li>More trade from <span class="math inline">\(a_i\)</span> to <span class="math inline">\(a_j\)</span>, higher shock permeability</li>
+<li>Maybe these should be relative to <span class="math inline">\(\rho_j\)</span>?</li>
 </ul></li>
-<li>Idea 2:
+<li>Costs (not to sink) :
 <ul>
-<li>If <span class="math inline">\(x\%\)</span> of <span class="math inline">\(a_j\)</span>’s imports are from <span class="math inline">\(a_i\)</span>, <span class="math inline">\(a_j\)</span> cannot receive more than <span class="math inline">\(x\%\sigma_i\)</span></li>
+<li><span class="math inline">\(\left(\frac{t_{ij}}{I_j}\right)^{-1}\)</span></li>
+<li>More reliant <span class="math inline">\(a_j\)</span> is on <span class="math inline">\(a_i\)</span>, more likely to transmit shock</li>
+</ul></li>
+<li>Resiliency:
+<ul>
+<li><span class="math inline">\(\rho_i\)</span> is capacity from <span class="math inline">\(a_i\)</span> to sink</li>
+<li>No cost to sink</li>
+<li>Prevents flow from “choosing” how to dissipate
+<ul>
+<li>Gives countries agency to dissipate</li>
+<li>But this also requires that <span class="math inline">\(\sigma\leq\sum_i\rho_i\)</span>.
+<ul>
+<li>We can’t choose whatever <span class="math inline">\(\sigma\)</span> we want or the problem won’t be solvable</li>
+<li>We can’t see how costly an increase in <span class="math inline">\(\sigma\)</span> is</li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -5686,29 +5832,18 @@ Aaron Graybill &amp; Gabe Sekeres
 <h1>Shock Example</h1>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="htmlwidget-7fdbb2cd36de536ab032" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7fdbb2cd36de536ab032">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland"],"label":["France","Italy","Germany","Switzerland"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy"],"width":[10,5,4,1,4,3,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8e537cd832c9f224c51b" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8e537cd832c9f224c51b">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland"],"label":["France","Italy","Germany","Switzerland"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy"],"width":[10,5,4,1,4,3,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
 </div><div class="column" style="width:40%;">
-<div id="htmlwidget-cde1c1572854f56488c4" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cde1c1572854f56488c4">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland","Source"],"label":["France","Italy","Germany","Switzerland","Source"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland","Italy","Germany","France"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy","Source","Source","Source"],"width":[10,5,4,1,4,3,0.5,0.5,0.5,1,1,1]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"from","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c0dd1aa5af3e839bbe57" style="width:768px;height:576px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c0dd1aa5af3e839bbe57">{"x":{"nodes":{"id":["France","Italy","Germany","Switzerland","Sink"],"label":["France","Italy","Germany","Switzerland","Sink"]},"edges":{"from":["France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland","Italy","Germany","France"],"to":["Italy","Germany","France","Germany","France","Italy","Germany","France","Italy","Sink","Sink","Sink"],"width":[10,5,4,1,4,3,0.5,0.5,0.5,1,1,1]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to","color":{"highlight":"#ffd1dc"},"scaling":{"min":4,"max":10}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
 <div id="why-this-way" class="slide section level2">
 <h1>Why this way?</h1>
 <ul>
-<li>You can’t really start from the place where the shock occurs and follow it a sink (as far as I can tell)
-<ul>
-<li>Because what would the capacities mean?</li>
-<li>The <span class="math inline">\(\sigma_n\)</span> would not be well defined because it would be the size of the system shock, not domestic shock</li>
-</ul></li>
-<li>This way we can have the capacities on paths from the source to the non-shock countries limited to a finite value
-<ul>
-<li>That is the algorithm doesn’t try to send the entire shock through one path
-<ul>
-<li>But what should those capacities be?</li>
-</ul></li>
-</ul></li>
+<li>There have been multiple iterations and this is the current one.</li>
 </ul>
 </div>
 <div id="tbds" class="slide section level2">
@@ -5718,6 +5853,24 @@ Aaron Graybill &amp; Gabe Sekeres
 <ul>
 <li>What capacity from source to other points?</li>
 </ul></li>
+<li>Under the desired capacities model, is it possible for a non-originating country to receive more than <span class="math inline">\(\sigma\)</span>?
+<ul>
+<li>I don’t think so, how could we make this happen?
+<ul>
+<li>Does a shock transmitted to a country cause a new shock of size <span class="math inline">\(\sigma&#39;\)</span>?</li>
+<li>Or should capacities be some <span class="math inline">\(\gamma x\sigma\)</span>, where <span class="math inline">\(\gamma&gt;1\)</span></li>
+</ul></li>
+</ul></li>
+<li>Do we need a quanitity constraint on the sink
+<ul>
+<li>Will the flow just bounce around internally if it’s not required to go to the sink</li>
+<li>If we need such a constraint, what is it’s amount</li>
+</ul></li>
+<li>What should be the costs going to the sink, should it be harder for some countries to dissipate a sink?
+<ul>
+<li>What would be the real world analogue?</li>
+</ul></li>
+<li>When setting up an artificial sink, are there costs?</li>
 </ul>
 </div>
 <div id="emprical-implementation" class="slide section level2">
@@ -6700,6 +6853,108 @@ Aaron Graybill &amp; Gabe Sekeres
 <li>How to apply lin-opt to “unwanted” flow</li>
 </ul></li>
 </ul>
+</div>
+<div id="python-test" class="slide section level2">
+<h1>Python Test</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> linprog</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># Gabe and I converted **his** maxflow code, but i had a substantial part</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># in this min cost implementation</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># edgemat should be &quot;from&quot;,&quot;to&quot;,&quot;t_{ij}&quot;,</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">def</span> maxflow(nvert,edgemat,req_source) :</span>
+<span id="cb1-11"><a href="#cb1-11"></a>  nrows <span class="op">=</span> edgemat.shape[<span class="dv">0</span>]</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  A <span class="op">=</span> np.identity(nrows)</span>
+<span id="cb1-13"><a href="#cb1-13"></a>  b <span class="op">=</span> np.zeros((<span class="dv">1</span>,nrows))</span>
+<span id="cb1-14"><a href="#cb1-14"></a>  </span>
+<span id="cb1-15"><a href="#cb1-15"></a>  <span class="co">#create capacity vector</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nrows) :</span>
+<span id="cb1-17"><a href="#cb1-17"></a>    b[<span class="dv">0</span>,i] <span class="op">=</span> edgemat[i][<span class="dv">2</span>]</span>
+<span id="cb1-18"><a href="#cb1-18"></a>  </span>
+<span id="cb1-19"><a href="#cb1-19"></a>  <span class="co"># create </span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>  <span class="co"># flow in has to be flow out b&#39;s</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>  b2 <span class="op">=</span> np.zeros((<span class="dv">1</span>,nvert<span class="dv">-2</span>)) </span>
+<span id="cb1-22"><a href="#cb1-22"></a>  </span>
+<span id="cb1-23"><a href="#cb1-23"></a>  <span class="co"># required flow into sink row</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>  <span class="co"># A_req_sink = np.zeros((1,nrows))</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>  <span class="co"># for i in range(nrows) :</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>  <span class="co">#   if edgemat[i][1] == nvert-1: #if goes to sink</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>  <span class="co">#     A_req_sink[0,i] = -1 # update A3 according</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>      </span>
+<span id="cb1-29"><a href="#cb1-29"></a>  <span class="co"># required flow out of source</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>  A_req_source <span class="op">=</span> np.zeros((<span class="dv">1</span>,nrows))</span>
+<span id="cb1-31"><a href="#cb1-31"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nrows) :</span>
+<span id="cb1-32"><a href="#cb1-32"></a>    <span class="cf">if</span> edgemat[i][<span class="dv">0</span>] <span class="op">==</span> <span class="dv">0</span> : <span class="co">#if comes out of sink</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>      A_req_source[<span class="dv">0</span>,i] <span class="op">=</span> <span class="dv">-1</span> <span class="co"># update accordingly, </span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>        <span class="co"># negative bc \geq constraint needs to be \leq</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>  b_req_source <span class="op">=</span> <span class="op">-</span>np.array([[req_source]]) <span class="co">#negative for same reason as above</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>  </span>
+<span id="cb1-37"><a href="#cb1-37"></a>  <span class="co"># flow in has to be flow out matrix skeleton (intermediate nodes)</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a>  A2 <span class="op">=</span> np.zeros([nvert<span class="dv">-2</span>,nrows])</span>
+<span id="cb1-39"><a href="#cb1-39"></a>  <span class="cf">for</span> edge_id, value <span class="kw">in</span> <span class="bu">enumerate</span>(edgemat[:,<span class="dv">0</span>:<span class="dv">2</span>]): <span class="co"># for first two columns in edgement</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>  </span>
+<span id="cb1-41"><a href="#cb1-41"></a>    <span class="cf">if</span> (value[<span class="dv">0</span>]<span class="op">==</span><span class="dv">0</span>) : <span class="co"># if the &quot;from&quot; value is 0 (coming from source)</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a>      <span class="co"># For the given edge_id</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a>      <span class="co"># the row corresponding to the &quot;to&quot; must have a 1 (receives flow) </span></span>
+<span id="cb1-44"><a href="#cb1-44"></a>      <span class="co"># no need to have a -1 because source has infinite amount</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a>      A2[value[<span class="dv">1</span>]<span class="op">-</span><span class="dv">1</span>,edge_id] <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb1-46"><a href="#cb1-46"></a>      </span>
+<span id="cb1-47"><a href="#cb1-47"></a>    <span class="cf">elif</span> (value[<span class="dv">1</span>]<span class="op">==</span>(nvert<span class="dv">-1</span>)) : <span class="co"># if &quot;to&quot; value is the last one, (going to sink) </span></span>
+<span id="cb1-48"><a href="#cb1-48"></a>      <span class="co"># the &quot;from&quot; node loses, but sink has no ability to pass it on</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a>      A2[value[<span class="dv">0</span>]<span class="op">-</span><span class="dv">1</span>,edge_id] <span class="op">=</span> <span class="dv">-1</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a>    </span>
+<span id="cb1-51"><a href="#cb1-51"></a>    </span>
+<span id="cb1-52"><a href="#cb1-52"></a>    <span class="cf">else</span> : <span class="co"># Otherwise intermediate to intermediate</span></span>
+<span id="cb1-53"><a href="#cb1-53"></a>      A2[value[<span class="dv">1</span>]<span class="op">-</span><span class="dv">1</span>,edge_id] <span class="op">=</span> <span class="dv">1</span> <span class="co"># flow into the &quot;to&quot;</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a>      A2[value[<span class="dv">0</span>]<span class="op">-</span><span class="dv">1</span>,edge_id] <span class="op">=</span> <span class="dv">-1</span> <span class="co"># flow out of the &quot;from&quot;</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a>      </span>
+<span id="cb1-56"><a href="#cb1-56"></a>  c <span class="op">=</span> edgemat[:,<span class="dv">3</span>] <span class="co">#cost vector/obj fun</span></span>
+<span id="cb1-57"><a href="#cb1-57"></a>  <span class="co">#print(A)</span></span>
+<span id="cb1-58"><a href="#cb1-58"></a>  <span class="co">#print(c)</span></span>
+<span id="cb1-59"><a href="#cb1-59"></a>  </span>
+<span id="cb1-60"><a href="#cb1-60"></a>  A_eq<span class="op">=</span>A2<span class="co">#np.append(A2,axis=0)</span></span>
+<span id="cb1-61"><a href="#cb1-61"></a>  </span>
+<span id="cb1-62"><a href="#cb1-62"></a>  A_ub<span class="op">=</span>np.concatenate((A,A_req_source),axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-63"><a href="#cb1-63"></a>  </span>
+<span id="cb1-64"><a href="#cb1-64"></a>  b_ub<span class="op">=</span>np.append(b,b_req_source)</span>
+<span id="cb1-65"><a href="#cb1-65"></a>  <span class="co">#reqflow = np.array([[reqflow]])</span></span>
+<span id="cb1-66"><a href="#cb1-66"></a>  </span>
+<span id="cb1-67"><a href="#cb1-67"></a>  </span>
+<span id="cb1-68"><a href="#cb1-68"></a>  <span class="bu">print</span>(linprog(c,A_ub<span class="op">=</span>A_ub,b_ub<span class="op">=</span>b_ub,A_eq<span class="op">=</span>A_eq,b_eq<span class="op">=</span>b2,method<span class="op">=</span><span class="st">&#39;simplex&#39;</span>))</span>
+<span id="cb1-69"><a href="#cb1-69"></a>  <span class="bu">print</span>(A_ub)</span>
+<span id="cb1-70"><a href="#cb1-70"></a>edge_mat_2<span class="op">=</span>np.transpose(</span>
+<span id="cb1-71"><a href="#cb1-71"></a>    np.array( [</span>
+<span id="cb1-72"><a href="#cb1-72"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],</span>
+<span id="cb1-73"><a href="#cb1-73"></a>              [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">7</span>],</span>
+<span id="cb1-74"><a href="#cb1-74"></a>              [<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>],</span>
+<span id="cb1-75"><a href="#cb1-75"></a>              [<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]))</span>
+<span id="cb1-76"><a href="#cb1-76"></a>maxflow(<span class="dv">8</span>,edge_mat_2,<span class="dv">8</span>)              </span></code></pre></div>
+<pre><code>##      con: array([0., 0., 0., 0., 0., 0.])
+##      fun: 78.0
+##  message: &#39;Optimization terminated successfully.&#39;
+##      nit: 27
+##    slack: array([4., 2., 0., 1., 0., 1., 1., 2., 0., 2., 1., 0., 3., 2., 0.])
+##   status: 0
+##  success: True
+##        x: array([2., 3., 3., 0., 2., 0., 3., 0., 3., 0., 0., 3., 2., 3.])
+## [[ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+##  [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+##  [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+##  [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+##  [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+##  [ 0.  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
+##  [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
+##  [ 0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
+##  [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]
+##  [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.  0.]
+##  [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
+##  [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.]
+##  [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
+##  [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  1.]
+##  [-1. -1. -1.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]]</code></pre>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

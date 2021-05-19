@@ -3,8 +3,8 @@ title: "210 Project Proposal"
 author: "Aaron Graybill & Gabe Sekeres"
 date: "`r Sys.Date()`"
 output:
-  slidy_presentation:
   beamer_presentation:
+  slidy_presentation:
   ioslides_presentation:
     logo: ~/Desktop/image1.png
 ---
@@ -74,7 +74,7 @@ edges <- data.frame(
 
 :::: {.columns}
 ::: {.column width="60%"}
-```{r,fig.align='center'}
+```{r,fig.align='center',eval=F}
 nodes <- data.frame(id=c("France","Italy","Germany","Switzerland"),label=c("France","Italy","Germany","Switzerland"))
 edges <- data.frame(
   from=c("France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"),
@@ -97,26 +97,37 @@ visNetwork(nodes, edges) %>%
 :::
 ::::
 
-## Modelling systemic shock
+## Modelling Systemic Shock
 
 - Consider a shock to $a_i$ of magnitude $\sigma_i$
-- We perform a min-cost flow algorithm with $a_i$ as the sink
-  - The minimum required flow is $\sigma_i$
-- What are the costs?
-  - Cost inversely proportional to quantity imported
-    - eg. shock in $a_1$, the cost of going from $a_2$ to $a_1$ $\propto \frac{1}{t_{1,2}}$
-  - This means that an arrow going one way in the diagram above goes the other way in shock propagation
-  - example on next slide
-- What are the interior capacities?
-  - Idea 1:
-    - If $x\%$ of $a_i$'s exports are to $a_j$, $a_j$ cannot receive more than $x\%\sigma_i$
-  - Idea 2:
-    - If $x\%$ of $a_j$'s imports are from $a_i$, $a_j$ cannot receive more than $x\%\sigma_i$
+- Denote total imports for country $i$ as $I_i$
+  - $I_i=\sum_{j\neq i}t_{ji}$
+- Denote total exported for country $i$ as $X_i$
+  - $X_i=\sum_{j\neq i}t_{ij}$
+- We perform a modified min-cost flow algorithm with $a_i$ as the source
+  - Instead of having a constraint on the sink, we have a constraint on the source to dispense a quantity $\sigma_i$ of flow
+  
+## Modelling Systemic Shock Cont.
+- Capacities (not to sink):
+  - $\frac{t_{ij}}{X_i}\sigma$ 
+  - More trade from $a_i$ to $a_j$, higher shock permeability
+  - Maybe these should be relative to $\rho_j$?
+- Costs (not to sink) :
+  - $\left(\frac{t_{ij}}{I_j}\right)^{-1}$
+  - More reliant $a_j$ is on $a_i$, more likely to transmit shock
+- Resiliency:
+  - $\rho_i$ is capacity from $a_i$ to sink
+  - No cost to sink
+  - Prevents flow from "choosing" how to dissipate
+    - Gives countries agency to dissipate
+    - But this also requires that $\sigma\leq\sum_i\rho_i$.
+      - We can't choose whatever $\sigma$ we want or the problem won't be solvable
+      - We can't see how costly an increase in $\sigma$ is
   
 ## Shock Example
 :::: {.columns}
 ::: {.column width="60%"}
-```{r,fig.align='center'}
+```{r,fig.align='center',eval=F}
 nodes <- data.frame(id=c("France","Italy","Germany","Switzerland"),label=c("France","Italy","Germany","Switzerland"))
 edges <- data.frame(
   from=c("France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland"),
@@ -131,37 +142,40 @@ visNetwork(nodes, edges) %>%
 ```
 :::
 ::: {.column width="40%"}
-```{r,fig.align='center'}
-nodes <- data.frame(id=c("France","Italy","Germany","Switzerland","Source"),label=c("France","Italy","Germany","Switzerland","Source"))
+```{r,fig.align='center',eval=F}
+nodes <- data.frame(id=c("France","Italy","Germany","Switzerland","Sink"),label=c("France","Italy","Germany","Switzerland","Sink"))
 edges <- data.frame(
   from=c("France","France","Italy","Italy","Germany","Germany","Switzerland","Switzerland","Switzerland","Italy","Germany","France"),
-  to=c("Italy","Germany","France","Germany","France","Italy","Germany","France","Italy","Source","Source","Source"),
+  to=c("Italy","Germany","France","Germany","France","Italy","Germany","France","Italy","Sink","Sink","Sink"),
   width=c(10,5,4,1,4,3,.5,.5,.5,1,1,1)
   )
 
 # graph <- graph_from_data_frame(edges, directed = F)
 # https://www.r-bloggers.com/2019/06/interactive-network-visualization-with-r/
 visNetwork(nodes, edges) %>%
- visEdges(arrows = 'from', scaling = list(min = 4, max = 10),color = list( highlight = "#ffd1dc"))
+ visEdges(arrows = 'to', scaling = list(min = 4, max = 10),color = list( highlight = "#ffd1dc"))
 ```
 :::
 ::::
 
 ## Why this way?
 
-- You can't really start from the place where the shock occurs and follow it a sink (as far as I can tell)
-  - Because what would the capacities mean? 
-  - The $\sigma_n$ would not be well defined because it would be the size of the system shock, not domestic shock
-- This way we can have the capacities on paths from the source to the non-shock countries limited to a finite value
-  - That is the algorithm doesn't try to send the entire shock through one path
-    - But what should those capacities be?
+- There have been multiple iterations and this is the current one.
 
 ## TBDs
 
 - How to deal with capacities, like what are they both in the model and in real life?
   - What capacity from source to other points?
-- Under the desired capacities model, is it possible for a non-originating country to receive more than $\sigma$
+- Under the desired capacities model, is it possible for a non-originating country to receive more than $\sigma$?
   - I don't think so, how could we make this happen?
+    - Does a shock transmitted to a country cause a new shock of size $\sigma'$? 
+    - Or should capacities be some $\gamma x\sigma$, where $\gamma>1$
+- Do we need a quanitity constraint on the sink
+  - Will the flow just bounce around internally if it's not required to go to the sink
+  - If we need such a constraint, what is it's amount
+- What should be the costs going to the sink, should it be harder for some countries to dissipate a sink?
+  - What would be the real world analogue?
+- When setting up an artificial sink, are there costs?
 
 ## Emprical Implementation
 
@@ -177,11 +191,11 @@ Ideally we could apply the above framework to examine the fragility in certain s
 
 Here's a random data sample:
 ```{r read and head data}
-d <- 
+d <-
   data.table::fread("/Users/aarongraybill/Downloads/Trade_DetailedTradeMatrix_E_All_Data/Trade_DetailedTradeMatrix_E_All_Data.csv",showProgress=T)
 
 set.seed(3.14)
-sample_row <- 
+sample_row <-
   sample(nrow(d),10)
 knitr::kable(d[sample_row,])
 ```
@@ -194,3 +208,84 @@ knitr::kable(d[sample_row,])
 
 - The model above was just a jumping off point that we need to iron out
   - How to apply lin-opt to "unwanted" flow
+
+## Python Test
+
+```{python, echo=T}
+
+import numpy as np
+from scipy.optimize import linprog
+import pandas as pd
+
+# Gabe and I converted **his** maxflow code, but i had a substantial part
+# in this min cost implementation
+
+# edgemat should be "from","to","t_{ij}",
+def maxflow(nvert,edgemat,req_source) :
+  nrows = edgemat.shape[0]
+  A = np.identity(nrows)
+  b = np.zeros((1,nrows))
+  
+  #create capacity vector
+  for i in range(nrows) :
+    b[0,i] = edgemat[i][2]
+  
+  # create 
+  # flow in has to be flow out b's
+  b2 = np.zeros((1,nvert-2)) 
+  
+  # required flow into sink row
+  # A_req_sink = np.zeros((1,nrows))
+  # for i in range(nrows) :
+  #   if edgemat[i][1] == nvert-1: #if goes to sink
+  #     A_req_sink[0,i] = -1 # update A3 according
+      
+  # required flow out of source
+  A_req_source = np.zeros((1,nrows))
+  for i in range(nrows) :
+    if edgemat[i][0] == 0 : #if comes out of sink
+      A_req_source[0,i] = -1 # update accordingly, 
+        # negative bc \geq constraint needs to be \leq
+  b_req_source = -np.array([[req_source]]) #negative for same reason as above
+  
+  # flow in has to be flow out matrix skeleton (intermediate nodes)
+  A2 = np.zeros([nvert-2,nrows])
+  for edge_id, value in enumerate(edgemat[:,0:2]): # for first two columns in edgement
+  
+    if (value[0]==0) : # if the "from" value is 0 (coming from source)
+      # For the given edge_id
+      # the row corresponding to the "to" must have a 1 (receives flow) 
+      # no need to have a -1 because source has infinite amount
+      A2[value[1]-1,edge_id] = 1 
+      
+    elif (value[1]==(nvert-1)) : # if "to" value is the last one, (going to sink) 
+      # the "from" node loses, but sink has no ability to pass it on
+      A2[value[0]-1,edge_id] = -1
+    
+    
+    else : # Otherwise intermediate to intermediate
+      A2[value[1]-1,edge_id] = 1 # flow into the "to"
+      A2[value[0]-1,edge_id] = -1 # flow out of the "from"
+      
+  c = edgemat[:,3] #cost vector/obj fun
+  #print(A)
+  #print(c)
+  
+  A_eq=A2#np.append(A2,axis=0)
+  
+  A_ub=np.concatenate((A,A_req_source),axis=0)
+  
+  b_ub=np.append(b,b_req_source)
+  #reqflow = np.array([[reqflow]])
+  
+  
+  print(linprog(c,A_ub=A_ub,b_ub=b_ub,A_eq=A_eq,b_eq=b2,method='simplex'))
+  print(A_ub)
+edge_mat_2=np.transpose(
+    np.array( [
+              [0,0,0,1,1,2,2,3,3,4,4,4,5,6],
+              [1,2,3,2,5,3,4,4,6,5,6,7,7,7],
+              [6,5,3,1,2,1,4,2,3,2,1,3,5,5],
+              [3,4,3,4,3,4,4,3,3,3,3,3,3,3]]))
+maxflow(8,edge_mat_2,8)              
+```
